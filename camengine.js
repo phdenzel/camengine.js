@@ -136,9 +136,7 @@ var CamEngine = (function() {
         procCtx.drawImage(video, 0, 0, procWidth, procHeight);
         var procImageData = procCtx.getImageData(0, 0, procWidth, procHeight);
         if (doProcess) {
-            var p = procImageData;
             procImageData = processor(procImageData);
-            console.log(procImageData.data === p.data);
         };
 
         // callback
