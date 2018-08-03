@@ -25,7 +25,6 @@ CamEngine.init({
     procHeight: wh,
     outputCvs: dst,
     doProcess: false,
-    processor: function() {},
     initSuccessCallback: initSuccess,
     initErrorCallback: alertError
 });
