@@ -60,6 +60,7 @@ var CamEngine = (function() {
         //// setting up components
         // video
         video.setAttribute('autoplay', '');
+        // video.setAttribute('muted', '');
         video.setAttribute('playsinline', '');
         // capture canvas
         captureCvs.width = captureWidth;
@@ -74,6 +75,11 @@ var CamEngine = (function() {
         outputCvs.height = outputHeight;
         outputCtx = outputCvs.getContext('2d');
 
+        // macOS / iOS hack for avoiding video cam freeze
+        setTimeout(function () {
+            video['play']();
+        }, 100);
+
         requestWebcam();
         
     }
@@ -83,12 +89,14 @@ var CamEngine = (function() {
 
         var constraints = {
             audio: false,
-            video: {facingMode: 'user', width: captureWidth, height: captureHeight}
+            video: {facingMode: { ideal: 'environment' },
+                    width: captureWidth,
+                    height: captureHeight}
         };
 
         navigator.mediaDevices.getUserMedia(constraints)
             .then(initSuccess)
-            .catch(initError);        
+            .catch(initError);
     }
 
     
