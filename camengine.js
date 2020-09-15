@@ -89,7 +89,7 @@ var CamEngine = (function() {
 
         var constraints = {
             audio: false,
-            video: {facingMode: { ideal: 'environment' },
+            video: {facingMode: 'user',
                     width: captureWidth,
                     height: captureHeight}
         };
