@@ -59,7 +59,8 @@ var CamEngine = (function() {
         
         //// setting up components
         // video
-        video.autoplay = true;
+        video.setAttribute('autoplay', '');
+        video.setAttribute('playsinline', '');
         // capture canvas
         captureCvs.width = captureWidth;
         captureCvs.height = captureHeight;
@@ -82,7 +83,7 @@ var CamEngine = (function() {
 
         var constraints = {
             audio: false,
-            video: {width: captureWidth, height: captureHeight}
+            video: {facingMode: 'user', width: captureWidth, height: captureHeight}
         };
 
         navigator.mediaDevices.getUserMedia(constraints)
