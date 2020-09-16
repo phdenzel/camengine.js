@@ -77,8 +77,10 @@ var CamEngine = (function() {
 
         // macOS / iOS hack for avoiding video cam freeze
         setTimeout(function () {
-            video['play']();
-        }, 100);
+            setTimeout(function () {
+                video['play']();
+            }, 100);
+        }, 80);
 
         requestWebcam();
         
